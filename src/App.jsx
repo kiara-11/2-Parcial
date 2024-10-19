@@ -1,35 +1,36 @@
-import { useState } from 'react'
+import { useEffect,useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import {getNotes} from "./lib/get_note"
+import Notes from "./components/updated"
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [notes, setNotes] = useState([]);
+  useEffect(() => {
+    async function fetchdata() {
+      try {
+        const response=await getNotes("https://670023444da5bd2375534f8b.mockapi.io/api/v1/note");
+        setNotes(response);
+      } catch (error) {
+        console.log("error");
+        
+      }
+    }
+    fetchdata();
+  }, [])
+  
+  return(
+  <>
+  <section>
+    {notes.map((notes)=>(<Notes notes={notes} key={notes.id}/>))}
+  </section>
+  </>
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  );
+
+  
 }
 
 export default App

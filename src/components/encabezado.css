@@ -1,0 +1,13 @@
+.encabezado{
+    display: flex;
+    justify-content: space-between;
+    background: violet;
+    color: white;
+}
+.imagen1{
+    margin: 22px;
+}
+.imagen2{
+    margin: 18px;
+}
+
