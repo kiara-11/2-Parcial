@@ -5,8 +5,9 @@ import Update from "./updated";
 
 const description = ({info}) => {
   return (
+
     <div className='descripcion'>
-        <p>{info}</p>
+        <p>Description of what is done here</p>
         <Update/>
     </div>
   )

@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import {getNotes} from "./lib/get_note"
-import Notes from "./components/updated"
+import Notes from "./components/template"
 
 
 function App() {
